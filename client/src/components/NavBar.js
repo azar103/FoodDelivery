@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -46,13 +48,6 @@ const MyLink = styled(Link)`
     color: #fff;
   }
 `;
-const InputSearch = styled.input`
-  width: 300px;
-  padding: 10px;
-  margin-top: -5px;
-  border: none;
-  border-radius: 2px;
-`;
 
 const TomatoLink = styled(MyLink)`
   background-color: #e2474d;
@@ -69,13 +64,12 @@ const TomatoLink = styled(MyLink)`
 const NavBar = () => {
   return (
     <NavbarContainer>
-      <NavBarHeader>Foodhub</NavBarHeader>
+      <NavBarHeader>Foodocity</NavBarHeader>
       <NavBarRight>
         <NavLink>
-          <InputSearch placeholder="Track your order" />
-        </NavLink>
-        <NavLink>
-          <MyLink to="/cart">Shop</MyLink>
+          <MyLink to="/cart">
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </MyLink>
         </NavLink>
         <NavLink>
           <MyLink to="/">Home</MyLink>
