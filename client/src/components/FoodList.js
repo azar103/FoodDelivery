@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import FoodItem from "./FoodItem";
-const DIVCONTAINER = styled.div`
-  display: flex;
-`;
+import List from "./List";
 const FoodList = ({ foods }) => {
-  console.log(foods);
   return (
-    <DIVCONTAINER>
+    <List>
       {foods.map((food, index) => (
         <FoodItem key={index} food={food} />
       ))}
-    </DIVCONTAINER>
+    </List>
   );
 };
 

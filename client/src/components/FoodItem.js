@@ -4,9 +4,10 @@ import styled from "styled-components";
 const FOODCONTAINER = styled.div`
   display: block;
 
-  height: 520px;
-  width: 283px;
-  margin: 5px;
+  height: auto;
+  width: auto;
+  margin: 9px;
+  box-shadow: 10px 10px 5px -9px rgba(0, 0, 0, 0.18);
 `;
 const IMG = styled.img`
   height: 283px;
@@ -19,28 +20,38 @@ const NAME = styled.div`
 `;
 const INGREDIENTS = styled.div`
   margin-left: 5px;
-  color: #333;
-  height: 100px;
+  color: black;
+  height: auto;
+  font-style: italic;
+  font-size: 13px;
 `;
 const BUTTON = styled.button`
   background-color: #e2474d;
   width: 120px;
-  color: white;
+  color: #eaffff;
+  cursor: pointer;
   border-radius: 300px;
   border: none;
   outline: none;
   padding: 8px;
-  margin-left: 5px;
-  margin-top: 5px;
+  margin-left: 2px;
+  margin-top: 2px;
   font-size: 12px;
   cursor: pointer;
+`;
+const PRICE = styled.p`
+  text-align: left;
+  width: auto;
+  margin-left: 5px;
+  color: #e2474d;
 `;
 const FoodItem = ({ food }) => {
   return (
     <FOODCONTAINER>
       <IMG src={food.url} />
       <NAME>{food.name}</NAME>
-      <INGREDIENTS>{food.ingredients.join("-")}</INGREDIENTS>
+      <INGREDIENTS>{food.ingredients.join(",")}</INGREDIENTS>
+      <PRICE>{food.price} DT</PRICE>
       <BUTTON>COMMANDER</BUTTON>
     </FOODCONTAINER>
   );

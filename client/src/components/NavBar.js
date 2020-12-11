@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { logout } from "../redux/actions/authActions";
 const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -60,11 +62,25 @@ const TomatoLink = styled(MyLink)`
     border: none;
   }
 `;
+const INPUT = styled.input`
+  width: 300px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+`;
 
 const NavBar = () => {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const dispatch = useDispatch();
   return (
     <NavbarContainer>
-      <NavBarHeader>Foodocity</NavBarHeader>
+      <NavBarHeader>
+        Foodocity
+        <INPUT placeholder="Search foods..." />
+      </NavBarHeader>
+
       <NavBarRight>
         <NavLink>
           <MyLink to="/cart">
@@ -72,10 +88,13 @@ const NavBar = () => {
           </MyLink>
         </NavLink>
         <NavLink>
-          <MyLink to="/">Home</MyLink>
-        </NavLink>
-        <NavLink>
-          <TomatoLink>Login</TomatoLink>
+          {!isAuth ? (
+            <TomatoLink to="/login">Login</TomatoLink>
+          ) : (
+            <TomatoLink to="/login" onClick={() => dispatch(logout())}>
+              Logout
+            </TomatoLink>
+          )}
         </NavLink>
       </NavBarRight>
     </NavbarContainer>
